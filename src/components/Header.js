@@ -11,27 +11,24 @@ const Header = () => {
     dispatch(authActions.logout())
   }
 
-  const loginUser = () => {
-    dispatch(authActions.login())
-  }
-
   return (
     <header className={classes.header}>
       <h1>Redux Auth</h1>
-      <nav>
-        <ul>
-          <li>
-            <a href='/'>My Products</a>
-          </li>
-          <li>
-            <a href='/'>My Sales</a>
-          </li>
-          <li>
-            {isAuthenticated && <button onClick={logoutUser}>Logout</button>}
-            {!isAuthenticated && <button onClick={loginUser}>Login</button>}
-          </li>
-        </ul>
-      </nav>
+      {isAuthenticated && (
+        <nav>
+          <ul>
+            <li>
+              <a href='/'>My Products</a>
+            </li>
+            <li>
+              <a href='/'>My Sales</a>
+            </li>
+            <li>
+              <button onClick={logoutUser}>Logout</button>
+            </li>
+          </ul>
+        </nav>
+      )}
     </header>
   )
 }

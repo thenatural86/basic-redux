@@ -1,20 +1,20 @@
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { authActions } from '../store/index'
 
 import classes from './Auth.module.css'
 
 const Auth = () => {
-  const isAuthenticated = useSelector((state) => state.isAuthenticated)
   const dispatch = useDispatch()
 
-  const loginUser = () => {
+  const loginUser = (e) => {
+    e.preventDefault()
     dispatch(authActions.login())
   }
 
   return (
     <main className={classes.auth}>
       <section>
-        <form>
+        <form onSubmit={loginUser}>
           <div className={classes.control}>
             <label htmlFor='email'>Email</label>
             <input type='email' id='email' />
